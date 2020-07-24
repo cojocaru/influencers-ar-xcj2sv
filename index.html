@@ -23,6 +23,19 @@
                 },
             });
         </script>
+        <script>
+                function onPlayVideo(event) {
+                    var video = document.getElementById('video');
+
+                    if (video.paused) {
+                        video.play();
+                        event.target.setAttribute('src', './assets/pause.svg');
+                    } else {
+                        video.pause();
+                        event.target.setAttribute('src', './assets/play.svg');
+                    }
+                }
+        </script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -74,5 +87,10 @@
 
             <a-entity camera></a-entity>
         </a-scene>
+        
+        <div style="position:absolute; bottom:0px; width:100%; display:flex; justify-content:center; overflow: hidden;">
+            <img src="assets/play.svg" style="height:50px; z-index:888; margin:10px; cursor:pointer;"
+                 onclick="onPlayVideo(event)" id="playButton"/>
+        </div>
     </body>
 </html>
